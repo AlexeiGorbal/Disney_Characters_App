@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">API Application</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="park_attractions">Park attractions</string>
+    <string name="video_games">Video games</string>
+    <string name="tv_shows">Tv shows</string>
+    <string name="short_films">Short films</string>
+    <string name="films">Films</string>
+    <string name="all">All</string>
+    <string name="my">My</string>
+    <string name="disney_character">Disney character</string>
+    <string name="character">Character</string>
+</resources>
