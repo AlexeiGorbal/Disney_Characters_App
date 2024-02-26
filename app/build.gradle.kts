@@ -59,6 +59,8 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
 
     implementation("com.google.dagger:hilt-android:2.48.1")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
     kapt("com.google.dagger:hilt-android-compiler:2.48.1")
 
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
@@ -81,6 +83,7 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$room_version")
     kapt("androidx.room:room-compiler:$room_version")
 
+    implementation("com.google.firebase:firebase-auth")
 }
 kapt {
     correctErrorTypes = true
