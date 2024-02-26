@@ -45,7 +45,7 @@ class LoginFragment : Fragment() {
 
             when (it) {
                 is UiState.UserNotFound -> {
-                    Toast.makeText(context, "User not found", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, R.string.user_not_found, Toast.LENGTH_SHORT).show()
                 }
 
                 is UiState.UserFound -> {

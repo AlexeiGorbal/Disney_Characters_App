@@ -56,7 +56,7 @@ class RegistrationFragment : Fragment() {
                     parentFragmentManager.commit {
                         replace(R.id.fragment_container, CharacterListFragment.newInstance())
                     }
-                    Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, R.string.saved, Toast.LENGTH_SHORT).show()
                 }
             }
         }

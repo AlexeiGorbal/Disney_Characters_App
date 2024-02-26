@@ -4,8 +4,8 @@ import com.example.apiapplication.model.Character
 
 sealed class CharacterListState {
 
-    object Loading : CharacterListState()
-    object Error : CharacterListState()
+    data object Loading : CharacterListState()
+    data object Error : CharacterListState()
     data class Loaded(val characters: List<Character>) : CharacterListState()
     data class OpenInformationScreen(val id: String) : CharacterListState()
 }

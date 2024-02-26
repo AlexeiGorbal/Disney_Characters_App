@@ -14,7 +14,7 @@ class InformationCharacterViewModel @Inject constructor(
     private val repository: CharacterRepository
 ) : ViewModel() {
 
-     val character = MutableLiveData<Character?>()
+    val character = MutableLiveData<Character?>()
 
     fun loadCharacter(id: String) {
         viewModelScope.launch {
