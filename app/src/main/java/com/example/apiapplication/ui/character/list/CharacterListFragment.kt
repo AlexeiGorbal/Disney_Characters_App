@@ -6,12 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.api_application.R
 import com.example.api_application.databinding.FragmentCharacterListBinding
-import com.example.apiapplication.ui.character.information.InformationCharacterFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -53,13 +52,13 @@ class CharacterListFragment : Fragment() {
                 }
 
                 is CharacterListState.OpenInformationScreen -> {
-                    parentFragmentManager.commit {
-                        add(
-                            R.id.fragment_container,
-                            InformationCharacterFragment.newInstance(it.id)
-                        )
-                        addToBackStack(null)
+                    val args = Bundle().apply {
+                        putString("id", it.id)
                     }
+                    findNavController().navigate(
+                        R.id.action_characterListFragment_to_informationCharacterFragment,
+                        args
+                    )
                 }
 
                 is CharacterListState.Error -> {
@@ -79,7 +78,5 @@ class CharacterListFragment : Fragment() {
 
         const val LIST_LOADED = "List loaded"
         const val LIST_IS_NOT_LOADED = "List is not loaded"
-
-        fun newInstance() = CharacterListFragment()
     }
 }
