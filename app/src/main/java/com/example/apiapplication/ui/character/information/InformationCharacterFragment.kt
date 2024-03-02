@@ -1,5 +1,7 @@
 package com.example.apiapplication.ui.character.information
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +11,7 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.api_application.R
 import com.example.api_application.databinding.FragmentInformationCharacterBinding
+import com.example.apiapplication.model.Character
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,6 +37,19 @@ class InformationCharacterFragment : Fragment() {
 
         id?.also {
             viewModel.loadCharacter(it)
+        }
+
+        binding.name.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, binding.name.text.toString())
+            }
+            val chooser = Intent.createChooser(intent, null)
+            try {
+                startActivity(chooser)
+            } catch (e: ActivityNotFoundException) {
+                // Define what your app should do if no activity can handle the intent.
+            }
         }
 
         viewModel.character.observe(viewLifecycleOwner) {
@@ -62,7 +78,7 @@ class InformationCharacterFragment : Fragment() {
             it?.parkAttractions?.forEach { film ->
                 val chip = Chip(context)
                 chip.text = film
-                binding.parkAttractionsChip .addView(chip)
+                binding.parkAttractionsChip.addView(chip)
             }
         }
     }

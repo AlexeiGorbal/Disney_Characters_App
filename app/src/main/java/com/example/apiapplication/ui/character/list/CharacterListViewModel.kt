@@ -14,11 +14,22 @@ class CharacterListViewModel @Inject constructor(
     private val repository: CharacterRepository
 ) : ViewModel() {
 
-    val charaters = MutableLiveData<List<Character>>()
+    val state = MutableLiveData<CharacterListState>()
 
     init {
+        state.value = CharacterListState.Loading
         viewModelScope.launch {
-            charaters.value = repository.getCharacters()
+            try {
+                state.value = CharacterListState.Loaded(repository.getCharacters())
+            } catch (e: Exception) {
+                state.value = CharacterListState.Error
+            }
+        }
+    }
+
+    fun processAction(action: CharacterListAction) {
+        if (action is CharacterListAction.CharacterClick) {
+            state.value = CharacterListState.OpenInformationScreen(action.id)
         }
     }
 }

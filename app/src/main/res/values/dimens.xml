@@ -2,6 +2,7 @@
 <resources>
     <dimen name="image_width">300dp</dimen>
     <dimen name="image_height">300dp</dimen>
+    <dimen name="edit_text_width">260dp</dimen>
     <dimen name="margin">10dp</dimen>
     <dimen name="elevation">9dp</dimen>
 </resources>

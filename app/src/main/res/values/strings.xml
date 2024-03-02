@@ -11,4 +11,12 @@
     <string name="my">My</string>
     <string name="disney_character">Disney character</string>
     <string name="character">Character</string>
+    <string name="log_in">Log-in</string>
+    <string name="enter_email">Enter your email</string>
+    <string name="enter_password">Enter your password</string>
+    <string name="sing_up">Sing-up</string>
+    <string name="empty_email">Empty email</string>
+    <string name="empty_password">Empty password</string>
+    <string name="saved">Saved</string>
+    <string name="user_not_found">User not found</string>
 </resources>
