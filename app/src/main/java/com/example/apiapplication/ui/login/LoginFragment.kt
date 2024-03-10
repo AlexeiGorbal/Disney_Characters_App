@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.api_application.R
 import com.example.api_application.databinding.FragmentLoginBinding
-import com.example.apiapplication.ui.character.list.CharacterListFragment
-import com.example.apiapplication.ui.registration.RegistrationFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,26 +47,18 @@ class LoginFragment : Fragment() {
                 }
 
                 is UiState.UserFound -> {
-                    parentFragmentManager.commit {
-                        replace(R.id.fragment_container, CharacterListFragment.newInstance())
-                    }
+                    findNavController().navigate(R.id.action_loginFragment_to_characterListFragment)
                 }
             }
         }
 
         binding.singUp.setOnClickListener {
-            parentFragmentManager.commit {
-                replace(R.id.fragment_container, RegistrationFragment.newInstance())
-            }
+            findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-        fun newInstance() = LoginFragment()
     }
 }

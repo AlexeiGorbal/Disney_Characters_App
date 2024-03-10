@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.api_application.R
 import com.example.api_application.databinding.FragmentRegistrationBinding
-import com.example.apiapplication.ui.character.list.CharacterListFragment
-import com.example.apiapplication.ui.registration.UiState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -53,9 +51,7 @@ class RegistrationFragment : Fragment() {
                 }
 
                 is UiState.Saved -> {
-                    parentFragmentManager.commit {
-                        replace(R.id.fragment_container, CharacterListFragment.newInstance())
-                    }
+                    findNavController().navigate(R.id.action_registrationFragment_to_characterListFragment)
                     Toast.makeText(context, R.string.saved, Toast.LENGTH_SHORT).show()
                 }
             }
@@ -65,9 +61,5 @@ class RegistrationFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-        fun newInstance() = RegistrationFragment()
     }
 }
